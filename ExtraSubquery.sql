@@ -35,7 +35,7 @@ HAVING COUNT(*) > 3;
 
 -- Using Subquery with UPDATE statement 
 UPDATE loyal_users 
-SET money = (SELECT MAX(money)*0.01 FROM orders GROUP BY user_id);
+SET money = (SELECT SUM(money)*0.01 FROM orders WHERE  order.user_id=loyal_users.user_id);
 
 -- Using Subquery with DELETE statement 
 
